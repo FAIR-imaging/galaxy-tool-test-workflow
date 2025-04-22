@@ -75,10 +75,6 @@ for r in range(2, len(axes_universe) + 1):
         if not frozenset('YX') <= frozenset(axes):
             continue
 
-        # Assumption: C axis is alias for S axis
-        if frozenset('CS') <= frozenset(axes):
-            continue
-
         shape = [5 + i for i in range(len(axes))]
         for complete_axes in (False, True):
             _axes = str(axes)  # copy
@@ -88,6 +84,11 @@ for r in range(2, len(axes_universe) + 1):
                     if axis not in axes:
                         _axes += axis
                         _shape += [1]
+
+            # Assumption: C axis is alias for S axis
+            if frozenset('CS') <= frozenset(_axes):
+                continue
+
             create_sample_images(_axes, _shape)
             create_sample_images(_axes[::-1], _shape[::-1])
 
