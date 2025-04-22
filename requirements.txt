@@ -1,2 +1,5 @@
-wget
+wget ~=3.2
 pandas ~=2.2.3
+numpy ~=2.2.5
+scipy ~=1.15.2
+tifffile ~=2025.3.30
