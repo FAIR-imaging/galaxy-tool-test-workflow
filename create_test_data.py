@@ -2,12 +2,14 @@ import glob
 import itertools
 import os
 import pathlib
+import zipfile
 
 import numpy as np
 import scipy.ndimage as ndi
 import tifffile
 
-tiff_dir_path = pathlib.Path('data/images/tiff')
+data_dir_path = pathlib.Path('data')
+tiff_dir_path = data_dir_path / 'images/tiff'
 tiff_dir_path.mkdir(parents=True, exist_ok=True)
 [os.remove(filepath) for filepath in glob.glob(str(tiff_dir_path / '*.tiff'))]
 
@@ -105,3 +107,8 @@ join_images(
         tiff_dir_path / 'float32_s7_x6_y5.tiff',
     ],
 )
+
+# Create ZIP file to be used in Galaxy
+with zipfile.ZipFile(data_dir_path / 'images.zip', 'w') as zipfile:
+    for file in glob.glob(str(tiff_dir_path / '*.tiff')):
+        zipfile.write(file)
