@@ -2,4 +2,4 @@
 .DS_Store
 /data/tools.json
 /data/images
-/data/images.zip
+/data/*-images.zip

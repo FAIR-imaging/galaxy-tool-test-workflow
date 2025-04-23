@@ -12,8 +12,16 @@ import tifffile
 
 data_dir_path = pathlib.Path('data')
 tiff_dir_path = data_dir_path / 'images/tiff'
-tiff_dir_path.mkdir(parents=True, exist_ok=True)
-[os.remove(filepath) for filepath in glob.glob(str(tiff_dir_path / '*.tiff'))]
+
+tiff_intensity_dir_path = tiff_dir_path / 'intensity'
+tiff_intensity_dir_path.mkdir(parents=True, exist_ok=True)
+for filepath in glob.glob(str(tiff_intensity_dir_path / '*.tiff')):
+    os.remove(filepath)
+
+tiff_binary_dir_path = tiff_dir_path / 'binary'
+tiff_binary_dir_path.mkdir(parents=True, exist_ok=True)
+for filepath in glob.glob(str(tiff_binary_dir_path / '*.tiff')):
+    os.remove(filepath)
 
 
 def create_sample_data(shape, sigma='auto'):
@@ -28,13 +36,19 @@ def create_sample_data(shape, sigma='auto'):
     return data
 
 
-def create_sample_image(data, axes, shape):
+def create_sample_image(data, axes, shape, target):
     assert len(axes) == len(shape)
     assert len(frozenset(axes) ) == len(axes)
     axes_hint = '_'.join(
         (f'{axis.lower()}{n}' for axis, n in zip(axes, shape))
     )
-    filepath = tiff_dir_path / f'{str(data.dtype)}_{axes_hint}.tiff'
+    match target:
+        case 'intensity':
+            target_dir_path = tiff_intensity_dir_path
+        case 'binary':
+            target_dir_path = tiff_binary_dir_path
+            assert len(np.unique(data)) == 2
+    filepath = target_dir_path / f'{str(data.dtype)}_{axes_hint}.tiff'
     tifffile.imwrite(
         str(filepath),
         data,
@@ -44,12 +58,24 @@ def create_sample_image(data, axes, shape):
     )
 
 
-def create_sample_images(axes, shape):
+def create_sample_images(axes, shape, target):
     data = create_sample_data(shape)
-    create_sample_image(data.astype(np.float16), axes, shape)
-    create_sample_image(data.astype(np.float32), axes, shape)
-    create_sample_image((data * 0xFF).round().astype(np.uint8), axes, shape)
-    create_sample_image((data * 0xFFFF).round().astype(np.uint16), axes, shape)
+
+    if target == 'binary':
+        data = (data > data.mean())
+
+    create_sample_image(
+        data.astype(np.float16), axes, shape, target,
+    )
+    create_sample_image(
+        data.astype(np.float32), axes, shape, target,
+    )
+    create_sample_image(
+        (data * 0xFF).round().astype(np.uint8), axes, shape, target,
+    )
+    create_sample_image(
+        (data * 0xFFFF).round().astype(np.uint16), axes, shape, target,
+    )
 
 
 def join_images(output_filepath, src_filepaths):
@@ -99,29 +125,39 @@ for r in range(2, len(axes_universe) + 1):
             if frozenset('CS') <= frozenset(_axes):
                 continue
 
-            create_sample_images(_axes, _shape)
-            create_sample_images(_axes[::-1], _shape[::-1])
-
-# In addition, create a test file with multiple images (of equal format)
-join_images(
-    tiff_dir_path / 'multiseries1.tiff',
-    src_filepaths=[
-        tiff_dir_path / 'uint8_y10_x11.tiff',
-        tiff_dir_path / 'uint8_y10_x11.tiff',
-    ],
-)
+            for target in ('intensity', 'binary'):
+                create_sample_images(_axes, _shape, target)
+                create_sample_images(_axes[::-1], _shape[::-1], target)
 
 
-# In addition, create a test file with multiple images (of different format)
-join_images(
-    tiff_dir_path / 'multiseries2.tiff',
-    src_filepaths=[
-        tiff_dir_path / 'uint8_y10_x11.tiff',
-        tiff_dir_path / 'float32_y10_x11_z12.tiff',
-    ],
-)
+for target in ('intensity', 'binary'):
+    match target:
+        case 'intensity':
+            target_dir_path = tiff_intensity_dir_path
+        case 'binary':
+            target_dir_path = tiff_binary_dir_path
 
-# Create ZIP file to be used in Galaxy
-with zipfile.ZipFile(data_dir_path / 'images.zip', 'w') as zipfile:
-    for file in glob.glob(str(tiff_dir_path / '*.tiff')):
-        zipfile.write(file)
+    # In addition, create a test file with multiple images (of equal format)
+    join_images(
+        target_dir_path / 'multiseries1.tiff',
+        src_filepaths=[
+            target_dir_path / 'uint8_y10_x11.tiff',
+            target_dir_path / 'uint8_y10_x11.tiff',
+        ],
+    )
+
+    # In addition, create a test file with multiple images (of different format)
+    join_images(
+        target_dir_path / 'multiseries2.tiff',
+        src_filepaths=[
+            target_dir_path / 'uint8_y10_x11.tiff',
+            target_dir_path / 'float32_y10_x11_z12.tiff',
+        ],
+    )
+
+    # Create ZIP file to be used in Galaxy
+    with zipfile.ZipFile(
+        data_dir_path / f'tiff-{target}-images.zip', 'w',
+    ) as zip_file:
+        for file in glob.glob(str(target_dir_path / '*.tiff')):
+            zip_file.write(file)
