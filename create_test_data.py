@@ -146,7 +146,7 @@ for target in ('intensity', 'binary'):
         ],
     )
 
-    # In addition, create a test file with multiple images (of different format)
+    # In addition, create a test file with multiple images (different formats)
     join_images(
         target_dir_path / 'multiseries2.tiff',
         src_filepaths=[
