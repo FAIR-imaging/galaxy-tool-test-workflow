@@ -75,7 +75,17 @@ for r in range(2, len(axes_universe) + 1):
         if not frozenset('YX') <= frozenset(axes):
             continue
 
-        shape = [5 + i for i in range(len(axes))]
+        # Generate the shape of the image
+        shape = []
+        for axis_idx, axis in enumerate(axes):
+            match axis:
+                case 'C':
+                    shape.append(3)
+                case 'S':
+                    shape.append(5)
+                case _:
+                    shape.append(10 + axis_idx)
+
         for complete_axes in (False, True):
             _axes = str(axes)  # copy
             _shape = list(shape)  # copy
@@ -96,8 +106,8 @@ for r in range(2, len(axes_universe) + 1):
 join_images(
     tiff_dir_path / 'multiseries1.tiff',
     src_filepaths=[
-        tiff_dir_path / 'uint8_y5_x6.tiff',
-        tiff_dir_path / 'uint8_y5_x6.tiff',
+        tiff_dir_path / 'uint8_y10_x11.tiff',
+        tiff_dir_path / 'uint8_y10_x11.tiff',
     ],
 )
 
@@ -106,8 +116,8 @@ join_images(
 join_images(
     tiff_dir_path / 'multiseries2.tiff',
     src_filepaths=[
-        tiff_dir_path / 'uint8_y5_x6.tiff',
-        tiff_dir_path / 'float32_s7_x6_y5.tiff',
+        tiff_dir_path / 'uint8_y10_x11.tiff',
+        tiff_dir_path / 'float32_y10_x11_z12.tiff',
     ],
 )
 
