@@ -1,0 +1,25 @@
+Intensity images:
+  class: Collection
+  collection_type: list
+  elements:
+
+  - class: File
+    filetype: tiff
+    path: data/images/tiff/intensity/uint8_y10_x11.tiff
+
+  - class: File
+    filetype: tiff
+    path: data/images/tiff/intensity/uint8_y10_x11_c3.tiff
+
+Binary images:
+  class: Collection
+  collection_type: list
+  elements:
+
+  - class: File
+    filetype: tiff
+    path: data/images/tiff/intensity/uint8_y10_x11.tiff
+
+  - class: File
+    filetype: tiff
+    path: data/images/tiff/intensity/uint8_y10_x11_c3.tiff
