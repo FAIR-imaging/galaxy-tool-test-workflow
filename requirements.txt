@@ -3,3 +3,4 @@ pandas ~=2.2.3
 numpy ~=2.2.5
 scipy ~=1.15.2
 tifffile ~=2025.3.30
+planemo @ git+https://github.com/kostrykin/planemo.git@dev/no_early_termination
