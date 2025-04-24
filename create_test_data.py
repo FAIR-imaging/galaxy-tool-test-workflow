@@ -138,7 +138,13 @@ for r in range(2, len(axes_universe) + 1):
                 continue
 
             for target in ('intensity', 'binary'):
-                create_sample_images(_axes, _shape, target)
+
+                # We do not need to test the variety of datatypes jointly with
+                #  1) singleton axes (test those only with uint8 below)
+                #  2) support for the Q axis (it's enough to test with uint8)
+                if complete_axes == '' and 'Q' not in _axes:
+                    create_sample_images(_axes, _shape, target)
+
                 create_sample_images(
                     _axes[::-1],
                     _shape[::-1],
