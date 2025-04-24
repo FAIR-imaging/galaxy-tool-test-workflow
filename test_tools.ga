@@ -21,17 +21,17 @@
                 }
             ],
             "label": "intensity_images",
-            "name": "Input dataset collection",
+            "name": "Input dataset",
             "outputs": [],
             "position": {
                 "left": 0,
                 "top": 0
             },
             "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": null, \"collection_type\": \"list\"}",
+            "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
-            "type": "data_collection_input",
-            "uuid": "7798662c-4a68-4642-b7f6-9fa7da5b827d",
+            "type": "data_input",
+            "uuid": "f72eb9d1-29ba-4b67-9077-de6c1fa1fed7",
             "when": null,
             "workflow_outputs": []
         },
@@ -48,29 +48,117 @@
                 }
             ],
             "label": "binary_images",
-            "name": "Input dataset collection",
+            "name": "Input dataset",
             "outputs": [],
             "position": {
                 "left": 0,
                 "top": 920
             },
             "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": null, \"collection_type\": \"list\"}",
+            "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
-            "type": "data_collection_input",
-            "uuid": "044da804-0a3a-421f-9ae3-84b694c528bb",
+            "type": "data_input",
+            "uuid": "7d683186-9c24-4a95-b9e0-09d66263e646",
             "when": null,
             "workflow_outputs": []
         },
         "2": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0",
             "errors": null,
             "id": 2,
             "input_connections": {
-                "input": {
+                "input_file": {
                     "id": 0,
                     "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Unzip",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "Unzip",
+            "outputs": [
+                {
+                    "name": "unzipped",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 250,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "57f0914ddb7b",
+                "name": "unzip",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "6.0+galaxy0",
+            "type": "tool",
+            "uuid": "6da8773f-9b3b-4cb9-bd0e-49ee3d35395e",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "input_file": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Unzip",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "Unzip",
+            "outputs": [
+                {
+                    "name": "unzipped",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 250,
+                "top": 920
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "57f0914ddb7b",
+                "name": "unzip",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "6.0+galaxy0",
+            "type": "tool",
+            "uuid": "21a8d99c-8af2-47eb-bec8-85ebd3d20877",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -83,7 +171,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 0
             },
             "post_job_actions": {},
@@ -101,15 +189,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "3": {
+        "5": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1",
             "errors": null,
-            "id": 3,
+            "id": 5,
             "input_connections": {
                 "input": {
-                    "id": 0,
-                    "output_name": "output"
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -122,7 +210,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 120
             },
             "post_job_actions": {},
@@ -140,15 +228,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "4": {
+        "6": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_histogram_equalization/ip_histogram_equalization/0.18.1+galaxy0",
             "errors": null,
-            "id": 4,
+            "id": 6,
             "input_connections": {
                 "input": {
-                    "id": 0,
-                    "output_name": "output"
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -161,7 +249,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 240
             },
             "post_job_actions": {},
@@ -179,15 +267,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "5": {
+        "7": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/anisotropic_diffusion/ip_anisotropic_diffusion/0.4.0+galaxy1",
             "errors": null,
-            "id": 5,
+            "id": 7,
             "input_connections": {
                 "input": {
-                    "id": 0,
-                    "output_name": "output"
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -200,7 +288,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 360
             },
             "post_job_actions": {},
@@ -218,58 +306,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "6": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/cellpose/cellpose/3.1.0+galaxy1",
-            "errors": null,
-            "id": 6,
-            "input_connections": {
-                "img_in": {
-                    "id": 0,
-                    "output_name": "output"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "Run generalist cell and nucleus segmentation",
-            "outputs": [
-                {
-                    "name": "cp_mask",
-                    "type": "tiff"
-                },
-                {
-                    "name": "cp_segm",
-                    "type": "png"
-                }
-            ],
-            "position": {
-                "left": 520,
-                "top": 0
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/cellpose/cellpose/3.1.0+galaxy1",
-            "tool_shed_repository": {
-                "changeset_revision": "5251ce4c4a11",
-                "name": "cellpose",
-                "owner": "bgruening",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"chan\": \"0\", \"chan2\": \"0\", \"chan_first\": false, \"img_in\": {\"__class__\": \"ConnectedValue\"}, \"model_type\": \"nuclei\", \"options\": {\"diameter\": null, \"resample\": true, \"flow_threshold\": \"0.4\", \"cellprob_threshold\": \"0.0\", \"niter\": \"0\", \"do_3D\": false, \"rescale\": null, \"invert\": false}, \"show_segmentation\": true, \"use_gpu\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "3.1.0+galaxy1",
-            "type": "tool",
-            "uuid": "65bf32b7-ae11-43e6-b858-0d11f2cf04cf",
-            "when": null,
-            "workflow_outputs": []
-        },
-        "7": {
+        "8": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/background_removal/background_removal/0.24.0+galaxy1",
             "errors": null,
-            "id": 7,
+            "id": 8,
             "input_connections": {
                 "input_image": {
-                    "id": 0,
-                    "output_name": "output"
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -282,7 +327,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 480
             },
             "post_job_actions": {},
@@ -300,19 +345,62 @@
             "when": null,
             "workflow_outputs": []
         },
-        "8": {
+        "9": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/cellpose/cellpose/3.1.0+galaxy1",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "img_in": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Run generalist cell and nucleus segmentation",
+            "outputs": [
+                {
+                    "name": "cp_mask",
+                    "type": "tiff"
+                },
+                {
+                    "name": "cp_segm",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/cellpose/cellpose/3.1.0+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "5251ce4c4a11",
+                "name": "cellpose",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"chan\": \"0\", \"chan2\": \"0\", \"chan_first\": false, \"img_in\": {\"__class__\": \"ConnectedValue\"}, \"model_type\": \"nuclei\", \"options\": {\"diameter\": null, \"resample\": true, \"flow_threshold\": \"0.4\", \"cellprob_threshold\": \"0.0\", \"niter\": \"0\", \"do_3D\": false, \"rescale\": null, \"invert\": false}, \"show_segmentation\": true, \"use_gpu\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "3.1.0+galaxy1",
+            "type": "tool",
+            "uuid": "65bf32b7-ae11-43e6-b858-0d11f2cf04cf",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "10": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0",
             "errors": null,
-            "id": 8,
+            "id": 10,
             "input_connections": {
                 "input_label": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 },
                 "use_raw_option|input_raw": {
-                    "id": 0,
-                    "output_name": "output"
+                    "id": 2,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [
@@ -330,7 +418,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 770
             },
             "post_job_actions": {},
@@ -348,15 +436,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "9": {
+        "11": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0",
             "errors": null,
-            "id": 9,
+            "id": 11,
             "input_connections": {
                 "input": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -369,7 +457,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 920
             },
             "post_job_actions": {},
@@ -387,15 +475,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "10": {
+        "12": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0",
             "errors": null,
-            "id": 10,
+            "id": 12,
             "input_connections": {
                 "input": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -408,7 +496,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 1040
             },
             "post_job_actions": {},
@@ -426,15 +514,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "11": {
+        "13": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binaryimage2points/ip_binaryimage_to_points/0.1-2",
             "errors": null,
-            "id": 11,
+            "id": 13,
             "input_connections": {
                 "input": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -447,7 +535,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 1160
             },
             "post_job_actions": {},
@@ -465,15 +553,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "12": {
+        "14": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/coordinates_of_roi/ip_coordinates_of_roi/0.0.4-2",
             "errors": null,
-            "id": 12,
+            "id": 14,
             "input_connections": {
                 "im": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -486,7 +574,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 1300
             },
             "post_job_actions": {},
@@ -504,15 +592,15 @@
             "when": null,
             "workflow_outputs": []
         },
-        "13": {
+        "15": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2",
             "errors": null,
-            "id": 13,
+            "id": 15,
             "input_connections": {
                 "input": {
-                    "id": 1,
-                    "output_name": "output"
+                    "id": 3,
+                    "output_name": "unzipped"
                 }
             },
             "inputs": [],
@@ -525,7 +613,7 @@
                 }
             ],
             "position": {
-                "left": 250,
+                "left": 500,
                 "top": 1440
             },
             "post_job_actions": {},
@@ -545,6 +633,6 @@
         }
     },
     "tags": [],
-    "uuid": "84b92cd5-603a-44d2-9977-e40a861398a4",
+    "uuid": "4c5903bc-7d4c-45c0-9722-f9e4ccb1494b",
     "version": 1
 }
