@@ -2,10 +2,12 @@
 
 import argparse
 import json
+import pathlib
 import re
 import sys
 from xml.etree import ElementTree
 
+import numpy as np
 import pandas as pd
 
 
@@ -14,6 +16,12 @@ parser.add_argument(
     'xunit',
     type=str,
     help='XUnit XML file produced by the workflow run.',
+)
+parser.add_argument(
+    '--csv',
+    type=str,
+    default=None,
+    help='Directory where results should be written as CSV.',
 )
 args = parser.parse_args()
 
@@ -73,25 +81,83 @@ for step in steps.values():
         if tool_id == 'unzip/unzip':
             continue
 
-        tested_tools[tool_id] = dict()
-        tested_tool = tested_tools[tool_id]
-        tested_tool['inputs'] = {
+        tool_test_results = tested_tools.setdefault(tool_id, list())
+        tool_test_result = dict()
+        tool_test_results.append(tool_test_result)
+        tool_test_result['inputs'] = {
             input_name: filenames_by_ids[input_data['id']]
             for input_name, input_data in job['inputs'].items()
             if input_data['id'] in filenames_by_ids
         }
-        tested_tool['success'] = (job['state'] == 'ok')
+        tool_test_result['success'] = (job['state'] == 'ok')
 
 report = dict(
-    expectedly_tested_tools=list(
+    expectedly_tested_tools=sorted(
         frozenset(tested_tools.keys()) & frozenset(tool_ids)
     ),
-    untested_tools=list(
+    untested_tools=sorted(
         frozenset(tool_ids) - frozenset(tested_tools.keys())
     ),
-    spuriously_tested_tools=list(
+    spuriously_tested_tools=sorted(
         frozenset(tested_tools.keys()) - frozenset(tool_ids)
     ),
     results=tested_tools,
 )
-json.dump(report, sys.stdout, indent=2)
+
+if args.csv is None:
+    json.dump(report, sys.stdout, indent=2)
+
+else:
+    csv_path = pathlib.Path(args.csv)
+    csv_path.mkdir(parents=True, exist_ok=True)
+    df = pd.DataFrame.from_dict(
+        {
+            'Expectedly Tested Tools:': pd.Series(
+                report['expectedly_tested_tools']
+            ),
+            'Success Rate': pd.Series(
+                [
+                    np.mean(
+                        [test['success'] for test in report['results'][tool_id]]
+                    )
+                    for tool_id in report['expectedly_tested_tools']
+                ]
+            ),
+            '': pd.Series([]),
+            'Untested Tools': pd.Series(report['untested_tools']),
+            'Spuriously Tested Tools': pd.Series(
+                report['spuriously_tested_tools']
+            ),
+        }
+    )
+    df.to_csv(csv_path / 'summary.csv', index=False)
+
+    for tool_id, tool_test_results in report['results'].items():
+
+        inputs = set()
+        for tool_test_result in tool_test_results:
+            inputs |= frozenset(tool_test_result['inputs'].keys())
+        inputs = sorted(inputs)
+
+        tool_test_results_df = pd.DataFrame.from_dict(
+            {
+                f'Inputs/{input_name}': pd.Series(
+                    [
+                        tool_test_result['inputs'][input_name]
+                        for tool_test_result in tool_test_results
+                    ]
+                )
+                for input_name in inputs
+            } | {
+                'Success': pd.Series(
+                    [test['success'] for test in tool_test_results]
+                ),
+            }
+        )
+        tool_test_results_filepath = csv_path / f'{tool_id}.csv'
+        tool_test_results_filepath.parent.mkdir(
+            parents=True, exist_ok=True
+        )
+        tool_test_results_df.to_csv(
+            tool_test_results_filepath, index=False
+        )
