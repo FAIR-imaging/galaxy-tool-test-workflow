@@ -112,7 +112,7 @@ else:
     csv_path.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame.from_dict(
         {
-            'Expectedly Tested Tools:': pd.Series(
+            'Expectedly Tested Tools': pd.Series(
                 report['expectedly_tested_tools']
             ),
             'Success Rate': pd.Series(
