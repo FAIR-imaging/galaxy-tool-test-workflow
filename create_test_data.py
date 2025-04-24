@@ -38,7 +38,7 @@ def create_sample_data(shape, sigma='auto'):
 
 def create_sample_image(data, axes, shape, target):
     assert len(axes) == len(shape)
-    assert len(frozenset(axes) ) == len(axes)
+    assert len(frozenset(axes)) == len(axes)
     axes_hint = '_'.join(
         (f'{axis.lower()}{n}' for axis, n in zip(axes, shape))
     )
