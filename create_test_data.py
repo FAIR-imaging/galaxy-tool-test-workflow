@@ -58,24 +58,31 @@ def create_sample_image(data, axes, shape, target):
     )
 
 
-def create_sample_images(axes, shape, target):
+def create_sample_images(axes, shape, target, dtypes='all'):
     data = create_sample_data(shape)
+
+    if dtypes == 'all':
+        dtypes = (np.float16, np.float32, np.uint8, np.uint16)
 
     if target == 'binary':
         data = (data > data.mean())
 
-    create_sample_image(
-        data.astype(np.float16), axes, shape, target,
-    )
-    create_sample_image(
-        data.astype(np.float32), axes, shape, target,
-    )
-    create_sample_image(
-        (data * 0xFF).round().astype(np.uint8), axes, shape, target,
-    )
-    create_sample_image(
-        (data * 0xFFFF).round().astype(np.uint16), axes, shape, target,
-    )
+    if np.float16 in dtypes:
+        create_sample_image(
+            data.astype(np.float16), axes, shape, target,
+        )
+    if np.float32 in dtypes:
+        create_sample_image(
+            data.astype(np.float32), axes, shape, target,
+        )
+    if np.uint8 in dtypes:
+        create_sample_image(
+            (data * 0xFF).round().astype(np.uint8), axes, shape, target,
+        )
+    if np.uint16 in dtypes:
+        create_sample_image(
+            (data * 0xFFFF).round().astype(np.uint16), axes, shape, target,
+        )
 
 
 def join_images(output_filepath, src_filepaths):
@@ -112,14 +119,19 @@ for r in range(2, len(axes_universe) + 1):
                 case _:
                     shape.append(10 + axis_idx)
 
-        for complete_axes in (False, True):
+        # Generate set of images with a subset of axes,
+        # as well as by adding the "missing" axes as singletons
+        for complete_axes in (
+            '',
+            frozenset(axes_universe) - {'C'},
+            frozenset(axes_universe) - {'S'},
+        ):
             _axes = str(axes)  # copy
             _shape = list(shape)  # copy
-            if complete_axes:
-                for axis in axes_universe:
-                    if axis not in axes:
-                        _axes += axis
-                        _shape += [1]
+            for axis in complete_axes:
+                if axis not in axes:
+                    _axes += axis
+                    _shape += [1]
 
             # Assumption: C axis is alias for S axis
             if frozenset('CS') <= frozenset(_axes):
@@ -127,7 +139,12 @@ for r in range(2, len(axes_universe) + 1):
 
             for target in ('intensity', 'binary'):
                 create_sample_images(_axes, _shape, target)
-                create_sample_images(_axes[::-1], _shape[::-1], target)
+                create_sample_images(
+                    _axes[::-1],
+                    _shape[::-1],
+                    target,
+                    dtypes=[np.uint8],
+                )
 
 
 for target in ('intensity', 'binary'):
