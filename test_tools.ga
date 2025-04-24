@@ -73,12 +73,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Unzip",
-                    "name": "input_file"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Unzip",
             "outputs": [
@@ -99,7 +94,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "6.0+galaxy0",
             "type": "tool",
             "uuid": "6da8773f-9b3b-4cb9-bd0e-49ee3d35395e",
@@ -117,12 +112,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Unzip",
-                    "name": "input_file"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Unzip",
             "outputs": [
@@ -143,7 +133,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"extract_options\": {\"extract_all\": \"True\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "6.0+galaxy0",
             "type": "tool",
             "uuid": "21a8d99c-8af2-47eb-bec8-85ebd3d20877",
@@ -390,9 +380,312 @@
         },
         "10": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3",
             "errors": null,
             "id": 10,
+            "input_connections": {
+                "input_file": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert image format",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "Convert image format",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tiff"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 210
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3",
+            "tool_shed_repository": {
+                "changeset_revision": "fcadded98e61",
+                "name": "bfconvert",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"bigtiff\": false, \"channel_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"compression\": \"False\", \"crop_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"noflat\": true, \"out_format\": \"tiff\", \"pyramid_options\": {\"generate\": \"False\", \"__current_case__\": 1}, \"range_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"series_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"tile_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"timepoint_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"z_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "6.7.0+galaxy3",
+            "type": "tool",
+            "uuid": "2b605184-5884-411b-bde7-02ca80ac9889",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "11": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_convert/graphicsmagick_image_convert/1.3.44+galaxy0",
+            "errors": null,
+            "id": 11,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert image format",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Convert image format",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 350
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_convert/graphicsmagick_image_convert/1.3.44+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "3ae9331790a6",
+                "name": "graphicsmagick_image_convert",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"output_format\": \"tiff\", \"palette\": {\"palette_select\": \"no\", \"__current_case__\": 2}, \"resize\": \"100.0\", \"transformations\": [\"-flop\"], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.3.44+galaxy0",
+            "type": "tool",
+            "uuid": "dce2dd3c-5955-44ad-990f-ef465a52273f",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "12": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2",
+            "errors": null,
+            "id": 12,
+            "input_connections": {
+                "inputs_0|image": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Process images using arithmetic expressions",
+            "outputs": [
+                {
+                    "name": "result",
+                    "type": "tiff"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 490
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "48fa3ac55df2",
+                "name": "image_math",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"expression\": \"img1 * 2\", \"inputs\": [{\"__index__\": 0, \"image\": {\"__class__\": \"RuntimeValue\"}, \"name\": \"img1\"}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.26.4+galaxy2",
+            "type": "tool",
+            "uuid": "8b125402-ee07-46c1-bf84-402c240ed5e3",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "13": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1",
+            "errors": null,
+            "id": 13,
+            "input_connections": {
+                "input_file": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Show image info",
+                    "name": "input_file"
+                }
+            ],
+            "label": null,
+            "name": "Show image info",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 1040,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "f8b4eada923c",
+                "name": "image_info",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input_file\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.7.1+galaxy1",
+            "type": "tool",
+            "uuid": "30d58e1a-4050-44c0-b53c-9af25725b549",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "14": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/imagej2_adjust_threshold_binary/imagej2_adjust_threshold_binary/20240614+galaxy0",
+            "errors": null,
+            "id": 14,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Adjust threshold",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Adjust threshold",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 1040,
+                "top": 120
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/imagej2_adjust_threshold_binary/imagej2_adjust_threshold_binary/20240614+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "2b007b1e6c1b",
+                "name": "imagej2_adjust_threshold_binary",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"display\": \"red\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"method_cond\": {\"auto_method\": \"Auto\", \"__current_case__\": 0, \"method\": \"Default\", \"black_background\": \"no\", \"threshold_min\": \"0.0\", \"threshold_max\": \"255.0\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "20240614+galaxy0",
+            "type": "tool",
+            "uuid": "9cbb5b10-e613-4407-8579-d9879cbe9952",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "15": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/orientationpy/orientationpy/0.2.0.4+galaxy2",
+            "errors": null,
+            "id": 15,
+            "input_connections": {
+                "image": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Compute image orientation",
+                    "name": "image"
+                }
+            ],
+            "label": null,
+            "name": "Compute image orientation",
+            "outputs": [
+                {
+                    "name": "output_angle_tsv",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 1040,
+                "top": 240
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/orientationpy/orientationpy/0.2.0.4+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "cc8fe984ec3e",
+                "name": "orientationpy",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"image\": {\"__class__\": \"RuntimeValue\"}, \"max_precision\": \"3\", \"min_coherency\": \"0.2\", \"min_energy\": \"0.1\", \"mode\": \"finite_difference\", \"sigma\": \"2.0\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.2.0.4+galaxy2",
+            "type": "tool",
+            "uuid": "1e9bc713-cb48-40b0-a3b3-a6abe0bd299e",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "16": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/scale_image/ip_scale_image/0.18.3+galaxy2",
+            "errors": null,
+            "id": 16,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Scale image",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Scale image",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 1040,
+                "top": 380
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/scale_image/ip_scale_image/0.18.3+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "72b8a6b7661b",
+                "name": "scale_image",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"antialias\": true, \"input\": {\"__class__\": \"RuntimeValue\"}, \"order\": \"1\", \"scale\": \"0.5\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.18.3+galaxy2",
+            "type": "tool",
+            "uuid": "aba23994-18d7-4d45-9163-6a107fa09757",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "17": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0",
+            "errors": null,
+            "id": 17,
             "input_connections": {
                 "input_label": {
                     "id": 3,
@@ -436,11 +729,11 @@
             "when": null,
             "workflow_outputs": []
         },
-        "11": {
+        "18": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0",
             "errors": null,
-            "id": 11,
+            "id": 18,
             "input_connections": {
                 "input": {
                     "id": 3,
@@ -475,20 +768,25 @@
             "when": null,
             "workflow_outputs": []
         },
-        "12": {
+        "19": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/label_to_binary/label_to_binary/1.26.4+galaxy0",
             "errors": null,
-            "id": 12,
+            "id": 19,
             "input_connections": {
                 "input": {
                     "id": 3,
                     "output_name": "unzipped"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert label map to binary image",
+                    "name": "input"
+                }
+            ],
             "label": null,
-            "name": "Convert binary image to label map",
+            "name": "Convert label map to binary image",
             "outputs": [
                 {
                     "name": "output",
@@ -500,25 +798,69 @@
                 "top": 1040
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/label_to_binary/label_to_binary/1.26.4+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "984358e43242",
-                "name": "binary2labelimage",
+                "changeset_revision": "5da15c3bafed",
+                "name": "label_to_binary",
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"mode\": {\"mode_selector\": \"cca\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.5+galaxy0",
+            "tool_state": "{\"bg_label\": \"0\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.26.4+galaxy0",
             "type": "tool",
-            "uuid": "f78ae690-b525-439c-99e9-f9f5829ec960",
+            "uuid": "f1f7a214-fa3d-40e4-899e-2d7e88a27191",
             "when": null,
             "workflow_outputs": []
         },
-        "13": {
+        "20": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy0",
+            "errors": null,
+            "id": 20,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Colorize label map",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Colorize label map",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 920
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "43c80f3c3b60",
+                "name": "colorize_labels",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"bg_color\": \"#000000\", \"bg_label\": \"0\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"radius\": \"10\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "3.2.1+galaxy0",
+            "type": "tool",
+            "uuid": "c5eabeb5-7de2-4d0e-a42b-9beffefcbff5",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "21": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/binaryimage2points/ip_binaryimage_to_points/0.1-2",
             "errors": null,
-            "id": 13,
+            "id": 21,
             "input_connections": {
                 "input": {
                     "id": 3,
@@ -553,11 +895,55 @@
             "when": null,
             "workflow_outputs": []
         },
-        "14": {
+        "22": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/labelimage2points/ip_labelimage_to_points/0.2-2",
+            "errors": null,
+            "id": 22,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert label map to points (center of masses)",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Convert label map to points (center of masses)",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 1040
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/labelimage2points/ip_labelimage_to_points/0.2-2",
+            "tool_shed_repository": {
+                "changeset_revision": "3b7460735223",
+                "name": "labelimage2points",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.2-2",
+            "type": "tool",
+            "uuid": "8890f1a5-fdd9-4df2-88d7-4d2d320fae53",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "23": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/coordinates_of_roi/ip_coordinates_of_roi/0.0.4-2",
             "errors": null,
-            "id": 14,
+            "id": 23,
             "input_connections": {
                 "im": {
                     "id": 3,
@@ -592,11 +978,55 @@
             "when": null,
             "workflow_outputs": []
         },
-        "15": {
+        "24": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/split_labelmap/ip_split_labelmap/0.2-3",
+            "errors": null,
+            "id": 24,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Split label map using morphological operators",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "Split label map using morphological operators",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tiff"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 1180
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/split_labelmap/ip_split_labelmap/0.2-3",
+            "tool_shed_repository": {
+                "changeset_revision": "0e7be7c35f15",
+                "name": "split_labelmap",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.2-3",
+            "type": "tool",
+            "uuid": "089912d8-90f4-4bc2-841c-35abcaea3cab",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "25": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2",
             "errors": null,
-            "id": 15,
+            "id": 25,
             "input_connections": {
                 "input": {
                     "id": 3,
@@ -630,9 +1060,53 @@
             "uuid": "0e1010d8-ac5a-4593-8199-0100b098e15c",
             "when": null,
             "workflow_outputs": []
+        },
+        "26": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/morphological_operations/morphological_operations/1.12.0+galaxy1",
+            "errors": null,
+            "id": 26,
+            "input_connections": {
+                "image": {
+                    "id": 3,
+                    "output_name": "unzipped"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Apply a morphological operation",
+                    "name": "image"
+                }
+            ],
+            "label": null,
+            "name": "Apply a morphological operation",
+            "outputs": [
+                {
+                    "name": "result",
+                    "type": "tiff"
+                }
+            ],
+            "position": {
+                "left": 770,
+                "top": 1320
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/morphological_operations/morphological_operations/1.12.0+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "4e25befab102",
+                "name": "morphological_operations",
+                "owner": "imgteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"image\": {\"__class__\": \"RuntimeValue\"}, \"operation\": \"erosion\", \"selem_shape\": \"disk\", \"selem_size\": \"1\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.12.0+galaxy1",
+            "type": "tool",
+            "uuid": "b511663f-b7bf-4aeb-9bf0-6feff156b7e3",
+            "when": null,
+            "workflow_outputs": []
         }
     },
     "tags": [],
-    "uuid": "4c5903bc-7d4c-45c0-9722-f9e4ccb1494b",
-    "version": 1
+    "uuid": "10186425-a1ca-4b71-b103-57d403bf1f01",
+    "version": 2
 }
