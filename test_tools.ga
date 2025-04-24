@@ -17,10 +17,10 @@
             "inputs": [
                 {
                     "description": "",
-                    "name": "Intensity images"
+                    "name": "intensity_images"
                 }
             ],
-            "label": "Intensity images",
+            "label": "intensity_images",
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
@@ -44,10 +44,10 @@
             "inputs": [
                 {
                     "description": "",
-                    "name": "Binary images"
+                    "name": "binary_images"
                 }
             ],
-            "label": "Binary images",
+            "label": "binary_images",
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
@@ -151,12 +151,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Perform histogram equalization",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Perform histogram equalization",
             "outputs": [
@@ -177,7 +172,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"h_type\": \"clahe\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"h_type\": \"clahe\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.18.1+galaxy0",
             "type": "tool",
             "uuid": "feee16da-a511-40ca-b8a3-2832a55c4835",
@@ -195,12 +190,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Apply anisotropic diffusion",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Apply anisotropic diffusion",
             "outputs": [
@@ -221,7 +211,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"eqoption\": \"1\", \"gamma\": \"0.1\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"kappa\": \"50\", \"niter\": \"50\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"eqoption\": \"1\", \"gamma\": \"0.1\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"kappa\": \"50\", \"niter\": \"50\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.4.0+galaxy1",
             "type": "tool",
             "uuid": "424a082f-0ca7-49b2-aaba-40e13bb5ae72",
@@ -239,12 +229,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Run generalist cell and nucleus segmentation",
-                    "name": "img_in"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Run generalist cell and nucleus segmentation",
             "outputs": [
@@ -269,7 +254,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"chan\": \"0\", \"chan2\": \"0\", \"chan_first\": false, \"img_in\": {\"__class__\": \"RuntimeValue\"}, \"model_type\": \"nuclei\", \"options\": {\"diameter\": null, \"resample\": true, \"flow_threshold\": \"0.4\", \"cellprob_threshold\": \"0.0\", \"niter\": \"0\", \"do_3D\": false, \"rescale\": null, \"invert\": false}, \"show_segmentation\": true, \"use_gpu\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"chan\": \"0\", \"chan2\": \"0\", \"chan_first\": false, \"img_in\": {\"__class__\": \"ConnectedValue\"}, \"model_type\": \"nuclei\", \"options\": {\"diameter\": null, \"resample\": true, \"flow_threshold\": \"0.4\", \"cellprob_threshold\": \"0.0\", \"niter\": \"0\", \"do_3D\": false, \"rescale\": null, \"invert\": false}, \"show_segmentation\": true, \"use_gpu\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.1.0+galaxy1",
             "type": "tool",
             "uuid": "65bf32b7-ae11-43e6-b858-0d11f2cf04cf",
@@ -287,12 +272,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Remove image background",
-                    "name": "input_image"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Remove image background",
             "outputs": [
@@ -313,7 +293,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"filter\": \"rolling_ball\", \"input_image\": {\"__class__\": \"RuntimeValue\"}, \"radius\": \"20.0\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"filter\": \"rolling_ball\", \"input_image\": {\"__class__\": \"ConnectedValue\"}, \"radius\": \"20.0\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.24.0+galaxy1",
             "type": "tool",
             "uuid": "e59f2da3-35ef-4b4e-9e92-48eca9ce717d",
@@ -336,10 +316,6 @@
                 }
             },
             "inputs": [
-                {
-                    "description": "runtime parameter for tool Extract image features",
-                    "name": "input_label"
-                },
                 {
                     "description": "runtime parameter for tool Extract image features",
                     "name": "use_raw_option"
@@ -365,7 +341,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"feature_options\": {\"features\": \"select\", \"__current_case__\": 1, \"selected_features\": [\"--mean_intensity\"]}, \"input_label\": {\"__class__\": \"RuntimeValue\"}, \"use_raw_option\": {\"use_raw\": \"raw_image\", \"__current_case__\": 1, \"input_raw\": {\"__class__\": \"RuntimeValue\"}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"feature_options\": {\"features\": \"select\", \"__current_case__\": 1, \"selected_features\": [\"--mean_intensity\"]}, \"input_label\": {\"__class__\": \"ConnectedValue\"}, \"use_raw_option\": {\"use_raw\": \"raw_image\", \"__current_case__\": 1, \"input_raw\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.18.1+galaxy0",
             "type": "tool",
             "uuid": "89f1a4f8-b1f7-4466-ab45-d77152c4ebfb",
@@ -422,12 +398,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Convert binary image to label map",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Convert binary image to label map",
             "outputs": [
@@ -448,7 +419,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"mode\": {\"mode_selector\": \"cca\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"mode\": {\"mode_selector\": \"cca\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.5+galaxy0",
             "type": "tool",
             "uuid": "f78ae690-b525-439c-99e9-f9f5829ec960",
@@ -466,12 +437,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Convert binary image to points (center of masses)",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Convert binary image to points (center of masses)",
             "outputs": [
@@ -492,7 +458,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1-2",
             "type": "tool",
             "uuid": "fc6a526e-f3fe-4fe5-a03a-19680450168c",
@@ -510,12 +476,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Convert binary image to points (point coordinates)",
-                    "name": "im"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Convert binary image to points (point coordinates)",
             "outputs": [
@@ -536,7 +497,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"im\": {\"__class__\": \"RuntimeValue\"}, \"threshold\": \"0.5\", \"white_obj\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"im\": {\"__class__\": \"ConnectedValue\"}, \"threshold\": \"0.5\", \"white_obj\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.0.4-2",
             "type": "tool",
             "uuid": "7214405f-9119-425b-8e12-916fccc2a9b4",
@@ -554,12 +515,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Count objects in label map",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Count objects in label map",
             "outputs": [
@@ -580,7 +536,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.0.5-2",
             "type": "tool",
             "uuid": "0e1010d8-ac5a-4593-8199-0100b098e15c",
@@ -589,6 +545,6 @@
         }
     },
     "tags": [],
-    "uuid": "7dad0d56-d9f6-436d-9958-8b216e9f4fac",
-    "version": 5
+    "uuid": "84b92cd5-603a-44d2-9977-e40a861398a4",
+    "version": 1
 }
