@@ -92,8 +92,8 @@ for step in steps.values():
         tool_test_result['state'] = job['state']  # `ok` means success
 
 report = dict(
-    expectedly_tested_tools=sorted(
-        frozenset(tested_tools.keys()) & frozenset(tool_ids)
+    tested_tools=sorted(
+        frozenset(tested_tools.keys())
     ),
     untested_tools=sorted(
         frozenset(tool_ids) - frozenset(tested_tools.keys())
@@ -112,15 +112,15 @@ else:
     csv_path.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame.from_dict(
         {
-            'Expectedly Tested Tools': pd.Series(
-                report['expectedly_tested_tools']
+            'Tested Tools': pd.Series(
+                report['tested_tools']
             ),
             'Success Rate': pd.Series(
                 [
                     np.mean(
                         [test['state'] == 'ok' for test in report['results'][tool_id]]
                     )
-                    for tool_id in report['expectedly_tested_tools']
+                    for tool_id in report['tested_tools']
                 ]
             ),
             '': pd.Series([]),
@@ -130,7 +130,7 @@ else:
             ),
         }
     )
-    df.to_csv(csv_path / 'summary.csv', index=False)
+    df.to_csv(csv_path / 'overview.csv', index=False)
 
     for tool_id, tool_test_results in report['results'].items():
 
