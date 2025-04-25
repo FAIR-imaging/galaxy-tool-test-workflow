@@ -24,9 +24,9 @@ binary_float32_y10_x11_z12_t13,error,False
 binary_float32_y10_x11_z12_t13_c3,error,False
 binary_float32_y10_x11_z12_t13_s5,error,False
 binary_multiseries1,ok,True
-binary_multiseries2,error,False
+binary_multiseries2,ok,True
 binary_uint16_y10_x11,ok,True
-binary_uint16_y10_x11_c3,ok,True
+binary_uint16_y10_x11_c3,error,False
 binary_uint16_y10_x11_s5,ok,True
 binary_uint16_y10_x11_t12,ok,True
 binary_uint16_y10_x11_t12_c3,error,False
@@ -47,7 +47,7 @@ binary_uint8_c3_q13_z12_x11_y10,ok,True
 binary_uint8_c3_q14_t13_z12_x11_y10,ok,True
 binary_uint8_c3_t12_x11_y10,ok,True
 binary_uint8_c3_t13_z12_x11_y10,ok,True
-binary_uint8_c3_x11_y10,ok,True
+binary_uint8_c3_x11_y10,error,False
 binary_uint8_c3_z12_x11_y10,ok,True
 binary_uint8_q12_x11_y10,ok,True
 binary_uint8_q13_t12_x11_y10,ok,True
@@ -65,7 +65,7 @@ binary_uint8_q1_t1_c3_z12_x11_y10,ok,True
 binary_uint8_q1_t1_s1_z12_x11_y10,ok,True
 binary_uint8_q1_t1_s1_z1_x11_y10,ok,True
 binary_uint8_q1_t1_s5_z12_x11_y10,ok,True
-binary_uint8_q1_t1_z1_c3_x11_y10,ok,True
+binary_uint8_q1_t1_z1_c3_x11_y10,error,False
 binary_uint8_q1_t1_z1_s5_x11_y10,ok,True
 binary_uint8_q1_z1_c3_t12_x11_y10,ok,True
 binary_uint8_q1_z1_s5_t12_x11_y10,ok,True
@@ -89,7 +89,7 @@ binary_uint8_t1_z1_c3_q12_x11_y10,ok,True
 binary_uint8_t1_z1_s5_q12_x11_y10,ok,True
 binary_uint8_x11_y10,ok,True
 binary_uint8_y10_x11,ok,True
-binary_uint8_y10_x11_c3,ok,True
+binary_uint8_y10_x11_c3,error,False
 binary_uint8_y10_x11_s5,ok,True
 binary_uint8_y10_x11_t12,ok,True
 binary_uint8_y10_x11_t12_c3,error,False

@@ -89,7 +89,7 @@ for step in steps.values():
             for input_name, input_data in job['inputs'].items()
             if input_data['id'] in filenames_by_ids
         }
-        tool_test_result['success'] = (job['state'] == 'ok')
+        tool_test_result['state'] = job['state']  # `ok` means success
 
 report = dict(
     expectedly_tested_tools=sorted(
@@ -118,7 +118,7 @@ else:
             'Success Rate': pd.Series(
                 [
                     np.mean(
-                        [test['success'] for test in report['results'][tool_id]]
+                        [test['state'] == 'ok' for test in report['results'][tool_id]]
                     )
                     for tool_id in report['expectedly_tested_tools']
                 ]
@@ -149,8 +149,12 @@ else:
                 )
                 for input_name in inputs
             } | {
+                'State': pd.Series(
+                    [test['state'] for test in tool_test_results]
+                ),
+            } | {
                 'Success': pd.Series(
-                    [test['success'] for test in tool_test_results]
+                    [test['state'] == 'ok' for test in tool_test_results]
                 ),
             }
         )
