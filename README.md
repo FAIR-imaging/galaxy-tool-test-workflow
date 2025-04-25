@@ -1,4 +1,4 @@
-# issue-34
+# galaxy-tool-test-workflow
 
 **Step 1:** Obtain an up-to-date list of tools:
 ```bash
