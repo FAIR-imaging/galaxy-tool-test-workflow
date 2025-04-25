@@ -10,9 +10,15 @@ python tools.py
 python create_test_data.py
 ```
 
-**Step 4:** Run the Galaxy test workflow:
+**Step 4:** Set `GALAXY_API_KEY` environment variable and run the Galaxy test workflow:
 ```bash
-planemo run test_tools.ga test_tools-job.yml --engine external_galaxy --galaxy_url https://usegalaxy.eu --galaxy_user_key <your_api_key> --test_output_xunit tests.xunit --simultaneous_uploads --no_early_termination
+planemo run test_tools.ga test_tools-job.yml \
+    --engine external_galaxy \
+    --galaxy_url https://usegalaxy.eu \
+    --galaxy_user_key $GALAXY_API_KEY \
+    --test_output_xunit tests.xunit \
+    --simultaneous_uploads \
+    --no_early_termination
 ```
 
 **Step 5:** Write test results as CSV:
